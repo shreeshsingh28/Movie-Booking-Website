@@ -98,13 +98,16 @@
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Include your database connection code here
-    // Replace 'your_host', 'your_username', 'your_password', and 'your_database' with your actual database credentials
-    $conn = mysqli_connect('your_host', 'your_username', 'your_password', 'your_database');
+    $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "movie_website";
 
-    // Check if connection was successful
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
 
     // Retrieve form data
     $fname = $_POST['fname'];
@@ -122,11 +125,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = mysqli_real_escape_string($conn, $email);
     $password = mysqli_real_escape_string($conn, $password);
 
-    // Hash the password
-    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     // Insert user data into the database
-    $sql = "INSERT INTO customer (u_email, u_password, fname, lname, dob) VALUES ('$email', '$hashed_password', '$fname', '$lname', '$dob')";
+    $sql = "INSERT INTO customer (u_email, u_password, fname, lname, dob) VALUES ('$email', '$password', '$fname', '$lname', '$dob')";
 
     if (mysqli_query($conn, $sql)) {
         echo "<script>alert('New record created successfully');</script>";
@@ -162,7 +163,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         // Date of birth format validation
-        var dobPattern = /^(0[1-9]|[12][0-9]|3[01])-(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)-\d{4}$/;
+        var dobPattern = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/;
         if (!dobPattern.test(dob)) {
             alert("Please enter the date of birth in DD-MMM-YYYY format");
             return false;
