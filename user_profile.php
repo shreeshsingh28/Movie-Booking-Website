@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Movie Booking Home</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <style>
@@ -19,44 +19,11 @@
             min-height: 100vh;
         }
 
-        .navbar {
-            margin-bottom: 20px; /* Add margin-bottom to create space below navbar */
-        }
-
-        .movie-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 70px;
-            gap: 20px;
-            padding: 20px;
-        }
-
-        .movie-card {
-            max-width: 300px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            overflow: hidden;
-            background-color: #fff;
-        }
-
-        .movie-card img {
-            width: 100%;
-            height: auto;
-        }
-
-        .movie-card-body {
-            padding: 10px;
-        }
-
-        .movie-card-title {
-            font-size: 25px;
-            margin-bottom: 5px;
-        }
-
-        .movie-card-details {
-            font-size: 14px;
-            color: #666;
+        .welcome-message {
+            color: white;
+            text-align: center;
+            font-size: 36px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
     </style>
 </head>
@@ -103,46 +70,6 @@ $username = $_GET['u_email'] ?? '';
 </div>
 
 
-<div class="movie-container">
-    <?php
-    // Database connection
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "movie_website";
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    // Fetch movies from the database
-    $sql = "SELECT movie_name, language, genre, rating, image_dir FROM movie";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        // Output data of each row
-        while($row = $result->fetch_assoc()) {
-            echo "<div class='movie-card'>";
-            echo "<img src='Images/" . $row["image_dir"] . "' alt='" . $row["movie_name"] . "'>";
-            echo "<div class='movie-card-body'>";
-            echo "<h3 class='movie-card-title'>" . $row["movie_name"] . "</h3>";
-            echo "<class='movie-card-details'>Language: " . $row["language"] . "<br>";
-            echo "<class='movie-card-details'>Genre: " . $row["genre"] . "<br>";
-            echo "<class='movie-card-details'>Rating: " . $row["rating"] . "<br>";
-            echo "</div>";
-            echo "</div>";
-        }
-    } else {
-        echo "No movies found";
-    }
-
-    $conn->close();
-    ?>
-</div>
 
 </body>
 </html>
