@@ -1,9 +1,9 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Movie Booking Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <style>
         body {
@@ -18,20 +18,51 @@
             justify-content: center;
             min-height: 100vh;
         }
-
-        .welcome-message {
-            color: white;
-            text-align: center;
-            font-size: 36px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        .form-container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 500px;
+            text-align: left;
         }
     </style>
 </head>
 
 <body>
 <?php
+// Database connection
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "movie_website";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
 // Retrieve username from the URL query parameter
 $username = $_GET['u_email'] ?? '';
+
+// Fetch customer information from the database
+$sql = "SELECT fname, lname, dob, mob FROM customer WHERE u_email = '$username'";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // Output customer information
+    $row = $result->fetch_assoc();
+    $fname = $row["fname"];
+    $lname = $row["lname"];
+    $dob = $row["dob"];
+    $mob = $row["mob"];
+} else {
+    echo "No customer found with the provided email.";
+    // You can handle this case as per your requirement
+}
+
+$conn->close();
 ?>
 
 <div class="fixed-top">
@@ -69,7 +100,32 @@ $username = $_GET['u_email'] ?? '';
     </nav>
 </div>
 
-
+<div class="form-container">
+    <h2>Profile Information</h2>
+    <form action="update_profile.php?u_email=<?php echo urlencode($username); ?>" method="post">
+        <div class="mb-3">
+            <label for="fname" class="form-label">First Name:</label>
+            <input type="text" class="form-control" id="fname" name="fname" value="<?php echo $fname; ?>" >
+        </div>
+        <div class="mb-3">
+            <label for="lname" class="form-label">Last Name:</label>
+            <input type="text" class="form-control" id="lname" name="lname" value="<?php echo $lname; ?>" >
+        </div>
+        <div class="mb-3">
+            <label for="dob" class="form-label">Date of Birth:</label>
+            <input type="text" class="form-control" id="dob" name="dob" value="<?php echo $dob; ?>" >
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" class="form-control" id="email" value="<?php echo $username; ?>" >
+        </div>
+        <div class="mb-3">
+            <label for="mob" class="form-label">Mobile:</label>
+            <input type="text" class="form-control" id="mob" name="mob" value="<?php echo $mob; ?>" >
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+</div>
 
 </body>
 </html>

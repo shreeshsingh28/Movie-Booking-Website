@@ -75,7 +75,7 @@
         </div>
         <div class="mb-3">
             <label for="exampleInputDOB" class="form-label">Date of Birth (DD-MMM-YYYY)</label>
-            <input type="text" class="form-control" id="exampleInputDOB" placeholder="DD-MMM-YYYY" name="dob">
+            <input type="text" class="form-control" id="exampleInputDOB" placeholder="YYYY-MM-DD" name="dob">
         </div>
         <div class="mb-3">
             <label for="exampleInputPhoneNumber" class="form-label">Phone Number</label>
@@ -127,7 +127,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     // Insert user data into the database
-    $sql = "INSERT INTO customer (u_email, u_password, fname, lname, dob) VALUES ('$email', '$password', '$fname', '$lname', '$dob')";
+    $sql = "INSERT INTO customer (u_email, password, fname, lname, dob, mob) VALUES ('$email', '$password', '$fname', '$lname', '$dob', '$phone')";
 
     if (mysqli_query($conn, $sql)) {
         echo "<script>alert('New record created successfully');</script>";

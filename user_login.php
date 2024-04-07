@@ -77,7 +77,7 @@
             $password = $_POST['password'];
 
             // Query to check user credentials
-            $sql = "SELECT * FROM customer WHERE u_email='$email' AND u_password='$password'";
+            $sql = "SELECT * FROM customer WHERE u_email='$email' AND password='$password'";
             $result = $conn->query($sql);
 
             // Check if query returned any rows
