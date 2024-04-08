@@ -105,25 +105,24 @@ $conn->close();
     <form action="update_profile.php?u_email=<?php echo urlencode($username); ?>" method="post">
         <div class="mb-3">
             <label for="fname" class="form-label">First Name:</label>
-            <input type="text" class="form-control" id="fname" name="fname" value="<?php echo $fname; ?>" >
+            <input type="text" class="form-control" id="fname" name="fname" value="<?php echo $fname; ?>" readonly>
         </div>
         <div class="mb-3">
             <label for="lname" class="form-label">Last Name:</label>
-            <input type="text" class="form-control" id="lname" name="lname" value="<?php echo $lname; ?>" >
+            <input type="text" class="form-control" id="lname" name="lname" value="<?php echo $lname; ?>" readonly>
         </div>
         <div class="mb-3">
             <label for="dob" class="form-label">Date of Birth:</label>
-            <input type="text" class="form-control" id="dob" name="dob" value="<?php echo $dob; ?>" >
+            <input type="text" class="form-control" id="dob" name="dob" value="<?php echo $dob; ?>" readonly>
         </div>
         <div class="mb-3">
             <label for="email" class="form-label">Email:</label>
-            <input type="email" class="form-control" id="email" value="<?php echo $username; ?>" >
+            <input type="email" class="form-control" id="email" value="<?php echo $username; ?>" readonly>
         </div>
         <div class="mb-3">
             <label for="mob" class="form-label">Mobile:</label>
-            <input type="text" class="form-control" id="mob" name="mob" value="<?php echo $mob; ?>" >
+            <input type="text" class="form-control" id="mob" name="mob" value="<?php echo $mob; ?>" readonly>
         </div>
-        <button type="submit" class="btn btn-primary">Update</button>
     </form>
 </div>
 
