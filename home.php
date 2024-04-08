@@ -42,10 +42,10 @@
                             <a class="nav-link active" aria-current="page" href="">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="user_login.php">User Login</a>
+                            <a class="nav-link active" href="user_login.php">User Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="admin_login.php">Admin Login</a>
+                            <a class="nav-link active" href="admin_login.php">Admin Login</a>
                         </li>
                     </ul>
                 </div>

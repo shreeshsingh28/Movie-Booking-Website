@@ -54,16 +54,16 @@ $email = $_GET['u_email'] ?? '';
                         <a class="nav-link active" aria-current="page" href="user_home.php?u_email=<?php echo urlencode($email); ?>">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="user_profile.php?u_email=<?php echo urlencode($email); ?>">Profile</a>
+                        <a class="nav-link active" href="user_profile.php?u_email=<?php echo urlencode($email); ?>">Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="user_book.php?u_email=<?php echo urlencode($email); ?>">Book</a>
+                        <a class="nav-link active" href="user_book.php?u_email=<?php echo urlencode($email); ?>">Book</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="user_history.php?u_email=<?php echo urlencode($email); ?>">Booking History</a>
+                        <a class="nav-link active" href="user_history.php?u_email=<?php echo urlencode($email); ?>">Booking History</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="user_login.php">Log Out</a>
+                        <a class="nav-link active" href="user_login.php">Log Out</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav">

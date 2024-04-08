@@ -101,16 +101,16 @@
                         <a class="nav-link active" aria-current="page" href="admin_home.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="admin_add_movie.php">Add Movie</a>
+                        <a class="nav-link active" href="admin_add_movie.php">Add Movie</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="admin_add_show.php">Add Show</a>
+                        <a class="nav-link active" href="admin_add_show.php">Add Show</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="admin_running_shows.php">Running Shows</a>
+                        <a class="nav-link active" href="admin_running_shows.php">Running Shows</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="admin_login.php">Log Out</a>
+                        <a class="nav-link active" href="admin_login.php">Log Out</a>
                     </li>
                 </ul>
             </div>
