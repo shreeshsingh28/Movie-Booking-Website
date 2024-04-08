@@ -110,9 +110,6 @@
                         <a class="nav-link" href="admin_running_shows.php">Running Shows</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="admin_cus_priority.php">Customer Priority</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="admin_login.php">Log Out</a>
                     </li>
                 </ul>
